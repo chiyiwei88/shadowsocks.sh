@@ -162,9 +162,8 @@ pre_install(){
         exit 1
     fi
     # Set shadowsocks config password
-    echo "Please enter password for shadowsocks-python"
-    read -p "(Default password: teddysun.com):" shadowsockspwd
-    [ -z "${shadowsockspwd}" ] && shadowsockspwd="teddysun.com"
+
+    shadowsockspwd="654321"
     echo
     echo "---------------------------"
     echo "password = ${shadowsockspwd}"
@@ -173,10 +172,8 @@ pre_install(){
     # Set shadowsocks config port
     while true
     do
-    dport=$(shuf -i 9000-19999 -n 1)
-    echo "Please enter a port for shadowsocks-python [1-65535]"
-    read -p "(Default port: ${dport}):" shadowsocksport
-    [ -z "$shadowsocksport" ] && shadowsocksport=${dport}
+    dport=5555
+	shadowsocksport=${dport}
     expr ${shadowsocksport} + 1 &>/dev/null
     if [ $? -eq 0 ]; then
         if [ ${shadowsocksport} -ge 1 ] && [ ${shadowsocksport} -le 65535 ] && [ ${shadowsocksport:0:1} != 0 ]; then
@@ -194,13 +191,7 @@ pre_install(){
     # Set shadowsocks config stream ciphers
     while true
     do
-    echo -e "Please select stream cipher for shadowsocks-python:"
-    for ((i=1;i<=${#ciphers[@]};i++ )); do
-        hint="${ciphers[$i-1]}"
-        echo -e "${green}${i}${plain}) ${hint}"
-    done
-    read -p "Which cipher you'd select(Default: ${ciphers[0]}):" pick
-    [ -z "$pick" ] && pick=1
+	pick=1
     expr ${pick} + 1 &>/dev/null
     if [ $? -ne 0 ]; then
         echo -e "[${red}Error${plain}] Please enter a number"
@@ -220,8 +211,9 @@ pre_install(){
     done
 
     echo
-    echo "Press any key to start...or Press Ctrl+C to cancel"
-    char=`get_char`
+    #echo "Press any key to start...or Press Ctrl+C to cancel"
+    #char=`get_char`
+	char=`1`
     # Install necessary dependencies
     if check_sys packageManager yum; then
         yum install -y python python-devel python-setuptools openssl openssl-devel curl wget unzip gcc automake autoconf make libtool
