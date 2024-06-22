@@ -83,7 +83,7 @@ allUninstall(){
 
 checkIp(){
 
-ipAdd=`curl -4 http://ifconfig.info -s --connect-timeout 10`
+ipAdd=`curl -4 http://ifconfig.info`
 clear
 echo "当前ip地址："${ipAdd}
 
@@ -230,14 +230,6 @@ progressfilt ()
 
 
 menu(){
-echo '1.全部安装(推荐只有"一台"服务器情况下)'
-echo '2.安装服务端(推荐安装在"国内"服务器[中转机])'
-echo '3.安装客户端(推荐安装在"国外"服务器)'
-echo "4.卸载服务端"
-echo "5.卸载客户端"
-echo "6.全卸载"
-echo "0.退出"
-
 $menuChoice = 0
 
 	#安装服务端
