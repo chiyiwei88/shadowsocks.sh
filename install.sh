@@ -1,7 +1,7 @@
 #!/bin/bash
 export PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 webPort=18080
-errorMsg=åé¦ˆç¾¤t.me/Scoks55555
+errorMsg=·´À¡Èºt.me/Scoks55555
 version=v3.0
 downLoadUrl=https://github.com/wyx176/nps-socks5/releases/download/
 serverSoft=linux_amd64_server
@@ -9,7 +9,7 @@ clientSoft=linux_amd64_client
 serverUrl=${downLoadUrl}${version}/${serverSoft}.tar.gz
 clientUrl=${downLoadUrl}${version}/${clientSoft}.tar.gz
 s5Path=/opt/nps-socks5/
-ipAdd=æ£€æµ‹å¤±è´¥
+ipAdd=¼ì²âÊ§°Ü
 
 if [ -n "$(grep 'Aliyun Linux release' /etc/issue)" -o -e /etc/redhat-release ];then
     OS=CentOS
@@ -60,7 +60,7 @@ unstallServer(){
       rm -rf /usr/bin/nps
       rm -rf ${s5Path}${serverSoft}
 	fi
-	 echo "å¸è½½æœåŠ¡ç«¯æˆåŠŸ"
+	 echo "Ğ¶ÔØ·şÎñ¶Ë³É¹¦"
 }
 
 unstallClient(){
@@ -69,13 +69,13 @@ unstallClient(){
     	rm -rf ${s5Path}${clientSoft}
     	rm -rf ${s5Path}${clientSoft}.tar.gz
   fi
-  echo "å¸è½½å®¢æˆ·ç«¯æˆåŠŸ"
+  echo "Ğ¶ÔØ¿Í»§¶Ë³É¹¦"
 }
 
 allUninstall(){
   unstallServer
   unstallClient
-  #åˆ é™¤ä¹‹å‰çš„
+  #É¾³ıÖ®Ç°µÄ
   if [[ -d ${s5Path} ]];then
 	  rm -rf ${s5Path}
 	fi
@@ -85,23 +85,23 @@ checkIp(){
 
 ipAdd=`curl -4 http://ifconfig.info`
 clear
-echo "å½“å‰ipåœ°å€ï¼š"${ipAdd}
+echo "µ±Ç°ipµØÖ·£º"${ipAdd}
 
 
-#2.ä¸‹è½½æœåŠ¡ç«¯
+#2.ÏÂÔØ·şÎñ¶Ë
 DownloadServer()
 {
-echo "ä¸‹è½½nps-socks5æœåŠ¡ä¸­è¯·è€å¿ƒç­‰å¾…..."
+echo "ÏÂÔØnps-socks5·şÎñÖĞÇëÄÍĞÄµÈ´ı..."
 if [[ ! -d ${s5Path} ]];then
 	mkdir -p ${s5Path}	
 fi
 
-#æœåŠ¡ç«¯
+#·şÎñ¶Ë
 wget -P ${s5Path} --no-cookie --no-check-certificate ${serverUrl} 2>&1 | progressfilt
 
 
 if [[ ! -f ${s5Path}${serverSoft}.tar.gz ]]; then
-	echo "æœåŠ¡ç«¯æ–‡ä»¶ä¸‹è½½å¤±è´¥"${errorMsg}
+	echo "·şÎñ¶ËÎÄ¼şÏÂÔØÊ§°Ü"${errorMsg}
 	exit 0
 fi
 
@@ -109,27 +109,27 @@ fi
 
 DownloadClient()
 {
-echo "ä¸‹è½½nps-socks5å®¢æˆ·ç«¯ä¸­è¯·è€å¿ƒç­‰å¾…..."
+echo "ÏÂÔØnps-socks5¿Í»§¶ËÖĞÇëÄÍĞÄµÈ´ı..."
 if [[ ! -d ${s5Path} ]];then
 	mkdir -p ${s5Path}	
 fi
 
 
-#å®¢æˆ·ç«¯
+#¿Í»§¶Ë
 wget -P ${s5Path} --no-cookie --no-check-certificate ${clientUrl} 2>&1 | progressfilt
 
 
 if [[ ! -f ${s5Path}${clientSoft}.tar.gz ]]; then
-	echo "å®¢æˆ·ç«¯æ–‡ä»¶ä¸‹è½½å¤±è´¥"${errorMsg}
+	echo "¿Í»§¶ËÎÄ¼şÏÂÔØÊ§°Ü"${errorMsg}
 	exit 0
 fi
 }
 
-#3.å®‰è£…Socks5æœåŠ¡ç«¯ç¨‹åº
+#3.°²×°Socks5·şÎñ¶Ë³ÌĞò
 InstallServer()
 {
 echo ""
-echo "æœåŠ¡ç«¯æ–‡ä»¶è§£å‹ä¸­..."
+echo "·şÎñ¶ËÎÄ¼ş½âÑ¹ÖĞ..."
 
 tar zxvf ${s5Path}${serverSoft}.tar.gz -C ${s5Path}
 
@@ -141,7 +141,7 @@ InstallClient()
 {
 
 echo ""
-echo "å®¢æˆ·ç«¯æ–‡ä»¶è§£å‹ä¸­..."
+echo "¿Í»§¶ËÎÄ¼ş½âÑ¹ÖĞ..."
 if [[ ! -d ${s5Path}${clientSoft} ]]; then
 echo "-------------"${s5Path}${clientSoft}
 mkdir -p ${s5Path}${clientSoft}
@@ -149,15 +149,15 @@ fi
 tar zxvf ${s5Path}${clientSoft}.tar.gz -C ${s5Path}${clientSoft}
 
 clear
-echo "å®¢æˆ·ç«¯æ–‡ä»¶å®‰è£…ä¸­..."
+echo "¿Í»§¶ËÎÄ¼ş°²×°ÖĞ..."
 cd ${s5Path}${clientSoft}
 if [[ $menuChoice == 1 ]];then
 ./npc install  -server=${ipAdd}:8025 -vkey=ij7poeu2d9btjbd3 -type=tcp && npc start
 else
-echo "æœåŠ¡å™¨å‚æ•°åœ¨[æœåŠ¡ç«¯]->æœåŠ¡åˆ—è¡¨+å·ä¸­"
-echo "ç±»ä¼¼ï¼š./npc -server=xxx.xxx.xxx.172:8025 -vkey=ij7poeu2d9btjbd3 -type=tcp"
-echo "åªéœ€è¦è¾“å…¥:-server=xxx.xxx.xxx.172:8025 -vkey=ij7poeu2d9btjbd3 -type=tcp å³å¯"
-read -p "è¯·è¾“å…¥æœåŠ¡ç«¯å‚æ•°ï¼š " serverParam
+echo "·şÎñÆ÷²ÎÊıÔÚ[·şÎñ¶Ë]->·şÎñÁĞ±í+ºÅÖĞ"
+echo "ÀàËÆ£º./npc -server=xxx.xxx.xxx.172:8025 -vkey=ij7poeu2d9btjbd3 -type=tcp"
+echo "Ö»ĞèÒªÊäÈë:-server=xxx.xxx.xxx.172:8025 -vkey=ij7poeu2d9btjbd3 -type=tcp ¼´¿É"
+read -p "ÇëÊäÈë·şÎñ¶Ë²ÎÊı£º " serverParam
 ./npc install ${serverParam} && npc start
 fi
 }
@@ -165,11 +165,11 @@ fi
 
 
 checkServer(){
-#æ£€æŸ¥æœåŠ¡ç«¯æ˜¯å¦å®‰è£…æˆåŠŸ
+#¼ì²é·şÎñ¶ËÊÇ·ñ°²×°³É¹¦
 SPID=`ps -ef|grep nps |grep -v grep|awk '{print $2}'`
 if [[ -z ${SPID} ]]; then
 echo ${SPID}"SPID----------------------"
-echo "æœåŠ¡ç«¯å®‰è£…å¤±è´¥"${errorMsg}
+echo "·şÎñ¶Ë°²×°Ê§°Ü"${errorMsg}
 unstallServer
 exit 0
 fi
@@ -180,7 +180,7 @@ checkClient(){
 
 CPID=`ps -ef|grep npc |grep -v grep|awk '{print $2}'`
 if [[ -z ${CPID} ]]; then
-echo "å®¢æˆ·ç«¯å®‰è£…å¤±è´¥"${errorMsg}
+echo "¿Í»§¶Ë°²×°Ê§°Ü"${errorMsg}
 unstallClient
 exit 0
 fi
@@ -196,11 +196,11 @@ function check_ip(){
                 if [[ $VALID_CHECK == "yes" ]]; then
                         return=$IP
                 else
-                        echo "å®‰è£…å¤±è´¥ï¼šipä¸æ­£ç¡®"
+                        echo "°²×°Ê§°Ü£ºip²»ÕıÈ·"
 						exit 0
                 fi
         else
-               echo "å®‰è£…å¤±è´¥ï¼šéip"
+               echo "°²×°Ê§°Ü£º·Çip"
 			   exit 0
         fi
 }
@@ -232,7 +232,7 @@ progressfilt ()
 menu(){
 $menuChoice = 0
 
-	#å®‰è£…æœåŠ¡ç«¯
+	#°²×°·şÎñ¶Ë
 	init
 	checkIp
 	
@@ -244,11 +244,11 @@ $menuChoice = 0
 	checkServer
 	checkClient
 	clear
-	echo "--å®‰è£…æˆåŠŸ------"${errorMsg}
-	echo "--åå°ç®¡ç†åœ°å€"${ipAdd}":"${webPort}
-	echo "--ç™»å½•è´¦å·admin"
-	echo "--ç™»å½•å¯†ç admin"
-	echo "é»˜è®¤socks5è´¦å·ä¿¡æ¯:è´¦å·socks5 å¯†ç socks5 ç«¯å£5555"
-	echo "å¦‚éœ€ä¿®æ”¹åå°ç®¡ç†ç«¯å£ä»¥åŠè´¦å·å¯†ç è¯·çœ‹github"
+	echo "--°²×°³É¹¦------"${errorMsg}
+	echo "--ºóÌ¨¹ÜÀíµØÖ·"${ipAdd}":"${webPort}
+	echo "--µÇÂ¼ÕËºÅadmin"
+	echo "--µÇÂ¼ÃÜÂëadmin"
+	echo "Ä¬ÈÏsocks5ÕËºÅĞÅÏ¢:ÕËºÅsocks5 ÃÜÂësocks5 ¶Ë¿Ú5555"
+	echo "ÈçĞèĞŞ¸ÄºóÌ¨¹ÜÀí¶Ë¿ÚÒÔ¼°ÕËºÅÃÜÂëÇë¿´github"
 }
 menu
