@@ -250,7 +250,5 @@ $menuChoice = 0
 	echo "--登录密码admin"
 	echo "默认socks5账号信息:账号socks5 密码socks5 端口5555"
 	echo "如需修改后台管理端口以及账号密码请看github"
-
-fi
 }
 menu
